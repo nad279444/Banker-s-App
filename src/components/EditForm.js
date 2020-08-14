@@ -99,7 +99,7 @@ class EditForm extends React.Component {
 }
 
 const mapStateToProps =(state,ownProps) => ({
- person: state.account.find(person=> person.id === ownProps.match.params.id)
+ person: state.accountState.account.find(person=> person.id === ownProps.match.params.id)
 })
 
 const mapDispatchToProps = {

@@ -2,7 +2,8 @@ import React from 'react'
 import AccountForm from "./components/AccountForm"
 import { connect } from 'react-redux'
 import AccountInfo from "./components/AccountInfo"
-import { addAccount,deleteAccount } from "./store/userAction"
+import { addAccount,deleteAccount,getAllAccounts } from "./store/userAction"
+import {logOut} from "./store/authActions"
 import "bootstrap/dist/css/bootstrap.css";
 
 
@@ -15,10 +16,15 @@ class App extends React.Component{
     this.props.deleteAccount(acc_id)
 
   }
+
+  componentDidMount(){
+    this.props.getAllAccounts()
+  }
   render(){
     return(
       <div className='container'>
-        <div className='row'></div>
+        <button onClick={this.props.logOut}>Logout</button>
+        <div className='row'>
         <div className="col-md-6">
         <AccountForm addAccount={this.addNewAccount}/>
         </div>
@@ -36,18 +42,24 @@ class App extends React.Component{
             )
           })};
         </div>
+       </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-   account:state.account
-});
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+   account:state.accountState.account
+  }
+};
 
 const mapDispatchToProps = {
   addAccount,
-  deleteAccount
+  deleteAccount,
+  getAllAccounts,
+  logOut
 
 }
 

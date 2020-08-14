@@ -81,7 +81,7 @@ class AccountForm extends React.Component {
                     name="bankBranch" 
                     value={this.state.bankBranch}
                     onChange={this.handleChange}/>
-                </div>
+                </div><br/>
                 <div className="form-group row">
                     <div className="col-sm-10">
                         <button type="submit" className="btn btn-primary btn-sm btn-block">SUBMIT</button>

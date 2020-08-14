@@ -1,24 +1,7 @@
 import { uuid } from "uuidv4";
 
 const initialState = {
-    account:[
-        {
-            accountName: 'Saitama',
-            accountNumber: Math.floor(Math.random()*11000000000000),
-            bankName: 'Zenith Bank',
-            bankBranch:'Dansoman',
-            id: "1"
-        
-        },
-        {
-            accountName: 'Nezuko',
-            accountNumber: Math.floor(Math.random()*11000000000000),
-            bankName: 'Barcklays Bank',
-            bankBranch:'Kasoa',
-            id: "2"
-        
-        }
-    ]
+    account:[]
 }
 
 
@@ -45,7 +28,9 @@ const userReducer = (state = initialState,action) =>{
                     return person;
                 }
             })
-            return {...state, account: updated_Acct}       
+            return {...state, account: updated_Acct}  
+        case 'SET_ALL_BANKERS':
+           return { account: action.payload }    
         default:
             return state;
     }
